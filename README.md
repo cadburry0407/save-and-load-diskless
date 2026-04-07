@@ -18,23 +18,28 @@
    Username: **admin**  
    Password: **p4ssw0rd123**
 
-2. Enter the FTP server's IP address (local IP), username, and password, then save.
+2. Enter the FTP server's IP address (local IP), username, and password, then
+   save.
 
-3. Upon successful FTP account save:
+3. Configure the maximum allowed save size in MB if needed.
 
+4. Upon successful FTP account save:
    - The application will automatically connect.
-   - A `data.json` file will be created in the application folder (stores admin account and game configurations locally)
-   - An `accounts.json` file will be created on the FTP server (stores regular user accounts)
+   - A `data.json` file will be created in the application folder (stores admin
+     account and game configurations locally)
+   - An `accounts.json` file will be created on the FTP server (stores regular
+     user accounts)
 
-4. Add game name and save file location.
-
+5. Add game name and save file location.
    - Basic format: `C:\Path\To\SaveFolder`
-   - **Folder exclusion format**: `C:\Path\To\SaveFolder_[Folder1,Folder2,Folder3]`
+   - **Folder exclusion format**:
+     `C:\Path\To\SaveFolder_[Folder1,Folder2,Folder3]`
      - Use underscore `_` followed by brackets `[]` at the end of the path
      - List folder names inside brackets, separated by commas (no spaces)
      - These folders will be excluded when saving/loading game files
 
-5. Admin password can be reset to default using the "Reset Admin Password" button (admin login only).
+6. Admin password can be reset to default using the "Reset Admin Password"
+   button (admin login only).
 
 ## User Instructions
 
@@ -43,6 +48,8 @@
 3. Select a save slot and click save.
 4. To load a save, select the slot and click load.
 5. Overwrite existing saves by saving to an occupied slot.
+6. If a save exceeds the configured size limit, the app will show a popup
+   warning instead of uploading it.
 
 ## Server Configuration
 
@@ -51,24 +58,29 @@ Ensure the following settings are applied:
 
 **Server > Configure > Server Listener**
 
-Set the protocol for 0.0.0.0 to **Explicit FTP over TLS and insecure plain FTP**.
+Set the protocol for 0.0.0.0 to **Explicit FTP over TLS and insecure plain
+FTP**.
 
 ## Auto-Save Feature
 
 The application includes an optional auto-save feature for users:
 
 1. Enable auto-save by checking the "Auto-Save" checkbox in the Games view
-2. The app will monitor save file locations for all games that have existing saves
-3. When files change in a monitored game's save location, the app automatically saves to the FTP server after a 5-second delay
+2. The app will monitor save file locations for all games that have existing
+   saves
+3. When files change in a monitored game's save location, the app automatically
+   saves to the FTP server after a 5-second delay
 4. Auto-save respects folder exclusion patterns (if configured)
 5. Only games with at least one existing save will be monitored
 6. Toggle off to disable auto-save at any time
 
-**Resource Usage**: Auto-save uses approximately 10-30 MB RAM and <1% CPU when idle.
+**Resource Usage**: Auto-save uses approximately 10-30 MB RAM and <1% CPU when
+idle.
 
 ## Disclaimer
 
-This application is exclusively for saving game save files. For additional features, please use different software.
+This application is exclusively for saving game save files. For additional
+features, please use different software.
 
 ## Core Functionality
 
@@ -96,6 +108,7 @@ This application is exclusively for saving game save files. For additional featu
 #### 1. Server Configuration
 
 - Configure FTP server connection settings
+- Configure the maximum allowed save size in MB
 - Test connectivity to the FTP server
 - Connection status indicator (connected/disconnected)
 
@@ -110,11 +123,13 @@ This application is exclusively for saving game save files. For additional featu
 
 - Reset user passwords
 - View user accounts
+- Change passwords with improved validation
 - Reset admin password to default
 
 ## User Experience Flow
 
-1. On first launch, the app creates a `data.json` file with the default admin account
+1. On first launch, the app creates a `data.json` file with the default admin
+   account
 2. Users see connection status (green = connected, red = disconnected)
 3. Admin configures FTP server settings and adds games
 4. Users log in with their credentials or register a new account
@@ -134,17 +149,30 @@ This application is exclusively for saving game save files. For additional featu
 
 ## Technical Features
 
-- **Folder Exclusion**: Exclude specific folders from save/load operations using `_[Folder1,Folder2]` syntax
-- **Auto-Save**: Optional file watcher that monitors game save locations and automatically uploads changes
+- **Folder Exclusion**: Exclude specific folders from save/load operations using
+  `_[Folder1,Folder2]` syntax
+- **Save Size Limit**: Restrict uploads with a configurable maximum save size in
+  MB
+- **Auto-Save**: Optional file watcher that monitors game save locations and
+  automatically uploads changes
 - **Connection Management**: Real-time FTP connection status monitoring
-- **Debouncing**: Auto-save waits 5 seconds after the last file change before uploading
-- **Error Handling**: Clear error messages for disconnection, authentication failures, and file operations
-- **Overwrite Protection**: Confirmation modals before overwriting existing saves
+- **Debouncing**: Auto-save waits 5 seconds after the last file change before
+  uploading
+- **Error Handling**: Clear error messages for disconnection, authentication
+  failures, and file operations
+- **Overwrite Protection**: Confirmation modals before overwriting existing
+  saves
+- **Popup Warnings**: Oversized saves are shown in a dedicated popup with clear
+  guidance
 
 ## 📜 Licensing
 
 This application is licensed under the [MIT License](./LICENSE.txt).
 
-It is provided **free of charge** and **only in executable form**; the source code is **not distributed** by the copyright holder.
+It is provided **free of charge** and **only in executable form**; the source
+code is **not distributed** by the copyright holder.
 
-You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this software, in accordance with the terms of the MIT License. If you obtain the source code from any source, you may use it under the same license terms.
+You are free to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of this software, in accordance with the terms of the MIT
+License. If you obtain the source code from any source, you may use it under the
+same license terms.
