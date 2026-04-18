@@ -53,8 +53,7 @@ When setup is completed:
   settings in `ftpConfig`.
 - `save-load-data.json` on FTP stores shared app data: accounts, games, and save
   limits.
-- The app preserves existing FTP data whenever possible instead of blindly
-  resetting it.
+- The app preserves existing FTP data whenever possible instead of resetting it.
 
 ## Adding Game Paths
 
